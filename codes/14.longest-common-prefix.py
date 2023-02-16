@@ -15,11 +15,16 @@ class Solution:
                 common_prefix = list(str_item)
                 continue
 
-            remove_index_list = []
+            remove_index = None
             for i, c_p in enumerate(common_prefix):
                 if (len(str_item) >= (i+1) and c_p != str_item[i]) or len(str_item) < (i+1):
-                    remove_index_list.append(i)
-
+                    remove_index = i                    
+                    break
+            
+            if remove_index is None:
+                continue
+            
+            remove_index_list = [i for i in range(i, len(common_prefix))]
             for remove_index in reversed(remove_index_list):
                 common_prefix.pop(remove_index)
 
