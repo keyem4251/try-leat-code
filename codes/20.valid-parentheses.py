@@ -12,12 +12,18 @@ class Solution:
             if bracket in ["(", "[", "{"]:
                 l.append(bracket)
             else:
-                if bracket == ")" and l[-1] == "(":
+                if bracket == ")" and l and l[-1] == "(":
                     l.pop(-1)
-                elif bracket == "]" and l[-1] == "[":
+                elif bracket == ")" and (not l or l[-1] in ["[", "{"]):
+                    return False
+                elif bracket == "]" and l and l[-1] == "[":
                     l.pop(-1)
-                elif bracket == "}" and l[-1] == "{":
+                elif bracket == "]" and (not l or l[-1] in ["(", "{"]):
+                    return False
+                elif bracket == "}" and l and l[-1] == "{":
                     l.pop(-1)
+                elif bracket == "}" and (not l or l[-1] in ["[", "("]):
+                    return False
 
         return True if not l else False
 # @lc code=end
