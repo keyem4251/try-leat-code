@@ -27,12 +27,12 @@ class Solution:
                 item2 = list2
 
                 if item1.val >= item2.val:
-                    node2 = ListNode(val=item2.val)
                     if result is None:
-                        result = node2
+                        result = ListNode(val=item2.val)
                     else:
-                        result.next = node2
-                        node2 = None
+                        pre_node2 = result
+                        pre_node2.next = ListNode(val=item2.val)
+                        result = pre_node2
                 else:
                     break
                 
@@ -40,12 +40,13 @@ class Solution:
                 if item2.next is None:
                     break
             
-            node1 = ListNode(val=item1.val)
-            if result is None:
-                result = node1
-            else:
-                result.next = node1
-                node1 = None
+            if item1.val <= item2.val:
+                if result is None:
+                    result = ListNode(val=item1.val)
+                else:
+                    pre_node1 = result
+                    pre_node1.next = ListNode(val=item1.val)
+                    result = pre_node1
             
             list1 = list1.next
             if item1.next is None:
