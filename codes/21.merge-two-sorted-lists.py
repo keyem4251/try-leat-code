@@ -23,35 +23,18 @@ class Solution:
 
         while True:
             item1 = list1
+            print(f"list1: {list1}")
+            if list1 is None:
+                break
+            list1 = list1.next
+
             while True:
                 item2 = list2
-
-                if item1.val >= item2.val:
-                    if result is None:
-                        result = ListNode(val=item2.val)
-                    else:
-                        pre_node2 = result
-                        pre_node2.next = ListNode(val=item2.val)
-                        result = pre_node2
-                else:
+                print(f"list2: {list2}")
+                if list2 is None:
                     break
-                
                 list2 = list2.next
-                if item2.next is None:
-                    break
-            
-            if item1.val <= item2.val:
-                if result is None:
-                    result = ListNode(val=item1.val)
-                else:
-                    pre_node1 = result
-                    pre_node1.next = ListNode(val=item1.val)
-                    result = pre_node1
-            
-            list1 = list1.next
-            if item1.next is None:
-                break
-        
+
         return result
 # @lc code=end
 
