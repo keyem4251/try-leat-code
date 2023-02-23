@@ -14,26 +14,38 @@ class ListNode:
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        result = None
-        item1 = None
-        item2 = None
+        temp = []
 
         if not list1 and not list2:
             return None
 
         while True:
-            item1 = list1
-            print(f"list1: {list1}")
-            if list1 is None:
-                break
-            list1 = list1.next
-
             while True:
-                item2 = list2
-                print(f"list2: {list2}")
                 if list2 is None:
                     break
-                list2 = list2.next
+
+                if list1 is None or list1.val >= list2.val:
+                    temp.append(list2.val)
+                    list2 = list2.next
+                else:
+                    break
+
+            if list1 is None:
+                break
+
+            if list2 is None or list1.val <= list2.val:
+                temp.append(list1.val)
+                list1 = list1.next
+
+        result = None
+        for i in reversed(temp):
+            node = ListNode(val=i)
+            if result is None:
+                result = node
+            else:
+                after = result
+                node.next = after
+                result = node
 
         return result
 # @lc code=end
