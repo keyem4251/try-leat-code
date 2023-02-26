@@ -8,6 +8,10 @@ from typing import List
 # @lc code=start
 class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
-        return 1
+        for i, n in enumerate(nums):
+            if n >= target:
+                return i
+
+        return len(nums)
 # @lc code=end
 
