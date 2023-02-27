@@ -1,2 +1,2 @@
-# try-leat-code
-try [leat code](https://leetcode.com) with python
+# try-leet-code
+try [leet code](https://leetcode.com) with python
