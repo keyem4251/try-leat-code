@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
-        pass
+        last_word = s.strip().split(" ")[-1]
+        return len(last_word)
 # @lc code=end
 
