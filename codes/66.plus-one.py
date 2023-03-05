@@ -15,7 +15,7 @@ class Solution:
             n -= 1
 
         plus_one = digit + 1
-        n = len(digits) - 1
+        n = len(digits) - 1 if digits[-1] != 9 else len(digits)
         result = []
         for i in range(len(digits)):
             result.append(int(plus_one / (10 ** n)))
