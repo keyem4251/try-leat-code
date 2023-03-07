@@ -15,13 +15,7 @@ class Solution:
             n -= 1
 
         plus_one = digit + 1
-        n = len(digits) - 1 if digits[-1] != 9 else len(digits)
-        result = []
-        for i in range(len(digits)):
-            result.append(int(plus_one / (10 ** n)))
-            plus_one = plus_one % (10 ** n)
-            n -= 1
+        return [int(s) for s in list(str(plus_one))]
 
-        return result
 # @lc code=end
 
