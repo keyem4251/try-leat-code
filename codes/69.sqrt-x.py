@@ -7,6 +7,11 @@
 # @lc code=start
 class Solution:
     def mySqrt(self, x: int) -> int:
-        pass
+        i = 0
+        while True:
+            if i * i > x:
+                return i - 1
+
+            i += 1
 # @lc code=end
 
