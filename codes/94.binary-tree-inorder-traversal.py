@@ -3,7 +3,7 @@
 #
 # [94] Binary Tree Inorder Traversal
 #
-from typing import Optional
+from typing import Optional, List
 
 # @lc code=start
 # Definition for a binary tree node.
@@ -24,19 +24,18 @@ class Solution:
         parent = None
 
         while True:
-            if node.left is not None:
+            if node is None:
+                break
+
+            if node.left is None:
+                result.append(node.val)
+                if node.val == parent.right.val:
+                    node = parent
+                elif parent.right is not None:
+                    node = parent.right
+            else:
                 parent = node
                 node = node.left
-            elif node.left is None:
-                result.append(node.val)
-                if node.right is not None:
-                    parent = node
-                    node = node.right
-                elif node.right is None:
-                    node = parent
-                    parent = None
-                elif parent is None:
-                    break
 
         return result
 # @lc code=end
