@@ -16,28 +16,17 @@ class TreeNode:
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        result = []
-        
-        if root is None:
-            return result
+        res, stack = [], [(root, False)]
+        while stack:
+            node, visited = stack.pop() # the last element
+            if node:
+                if visited:
+                    res.append(node.val)
+                else:  # inorder: left -> root -> right
+                    stack.append((node.right, False))
+                    stack.append((node, True))
+                    stack.append((node.left, False))
 
-        node = root
-        parent = None
-
-        while True:
-            if node is None:
-                break
-
-            if node.left is None:
-                result.append(node.val)
-                if node.val == parent.right.val:
-                    node = parent
-                elif parent.right is not None:
-                    node = parent.right
-            else:
-                parent = node
-                node = node.left
-
-        return result
+        return res
 # @lc code=end
 
