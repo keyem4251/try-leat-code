@@ -7,18 +7,20 @@
 # @lc code=start
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        longest = 0
-        d = dict()
+        max_len = 0
+        start = 0
+        end = 0
+        seen = set()
 
-        for c in s:
-            if c not in d:
-                d[c] = True
-                longest = max(longest, len(d.keys()))
+        while end < len(s):
+            if s[end] not in seen:
+                seen.add(s[end])
+                end += 1
+                max_len = max(max_len, end - start)
             else:
-                longest = max(longest, len(d.keys()))
-                d.clear()
-                d[c] = True        
+                seen.remove(s[start])
+                start += 1
 
-        return longest
+        return max_len
 # @lc code=end
 
